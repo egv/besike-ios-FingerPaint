@@ -21,6 +21,11 @@
 		045C5F7B1A03CF9A00ED77B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045C5F571A03C90C00ED77B9 /* Main.storyboard */; };
 		045C5F7D1A03E81900ED77B9 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C5F7C1A03E81900ED77B9 /* Path.swift */; };
 		045C5F7E1A03E81900ED77B9 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C5F7C1A03E81900ED77B9 /* Path.swift */; };
+		90D7FD801C07584F00D88135 /* FingerPaintCanvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 90D7FD7F1C07584F00D88135 /* FingerPaintCanvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90D7FD841C07584F00D88135 /* FingerPaintCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D7FD7D1C07584F00D88135 /* FingerPaintCanvas.framework */; };
+		90D7FD851C07584F00D88135 /* FingerPaintCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90D7FD7D1C07584F00D88135 /* FingerPaintCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		90D7FD8A1C07585600D88135 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C5F781A03CC2B00ED77B9 /* CanvasView.swift */; };
+		90D7FD8B1C07585E00D88135 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C5F7C1A03E81900ED77B9 /* Path.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +36,28 @@
 			remoteGlobalIDString = 045C5F4D1A03C90C00ED77B9;
 			remoteInfo = FingerPaint;
 		};
+		90D7FD821C07584F00D88135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045C5F461A03C90C00ED77B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D7FD7C1C07584F00D88135;
+			remoteInfo = FingerPaintCanvas;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		90D7FD891C07584F00D88135 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				90D7FD851C07584F00D88135 /* FingerPaintCanvas.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		045C5F4E1A03C90C00ED77B9 /* FingerPaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerPaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +73,9 @@
 		045C5F741A03CA5200ED77B9 /* SpecTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
 		045C5F781A03CC2B00ED77B9 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		045C5F7C1A03E81900ED77B9 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		90D7FD7D1C07584F00D88135 /* FingerPaintCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerPaintCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D7FD7F1C07584F00D88135 /* FingerPaintCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FingerPaintCanvas.h; sourceTree = "<group>"; };
+		90D7FD811C07584F00D88135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +83,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D7FD841C07584F00D88135 /* FingerPaintCanvas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		045C5F601A03C90C00ED77B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D7FD791C07584F00D88135 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,6 +109,7 @@
 			children = (
 				045C5F501A03C90C00ED77B9 /* FingerPaint */,
 				045C5F661A03C90C00ED77B9 /* FingerPaintTests */,
+				90D7FD7E1C07584F00D88135 /* FingerPaintCanvas */,
 				045C5F4F1A03C90C00ED77B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +119,7 @@
 			children = (
 				045C5F4E1A03C90C00ED77B9 /* FingerPaint.app */,
 				045C5F631A03C90C00ED77B9 /* FingerPaintTests.xctest */,
+				90D7FD7D1C07584F00D88135 /* FingerPaintCanvas.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +173,27 @@
 			path = spec;
 			sourceTree = "<group>";
 		};
+		90D7FD7E1C07584F00D88135 /* FingerPaintCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				90D7FD7F1C07584F00D88135 /* FingerPaintCanvas.h */,
+				90D7FD811C07584F00D88135 /* Info.plist */,
+			);
+			path = FingerPaintCanvas;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		90D7FD7A1C07584F00D88135 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D7FD801C07584F00D88135 /* FingerPaintCanvas.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		045C5F4D1A03C90C00ED77B9 /* FingerPaint */ = {
@@ -144,10 +203,12 @@
 				045C5F4A1A03C90C00ED77B9 /* Sources */,
 				045C5F4B1A03C90C00ED77B9 /* Frameworks */,
 				045C5F4C1A03C90C00ED77B9 /* Resources */,
+				90D7FD891C07584F00D88135 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				90D7FD831C07584F00D88135 /* PBXTargetDependency */,
 			);
 			name = FingerPaint;
 			productName = FingerPaint;
@@ -172,6 +233,24 @@
 			productReference = 045C5F631A03C90C00ED77B9 /* FingerPaintTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		90D7FD7C1C07584F00D88135 /* FingerPaintCanvas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D7FD861C07584F00D88135 /* Build configuration list for PBXNativeTarget "FingerPaintCanvas" */;
+			buildPhases = (
+				90D7FD781C07584F00D88135 /* Sources */,
+				90D7FD791C07584F00D88135 /* Frameworks */,
+				90D7FD7A1C07584F00D88135 /* Headers */,
+				90D7FD7B1C07584F00D88135 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FingerPaintCanvas;
+			productName = FingerPaintCanvas;
+			productReference = 90D7FD7D1C07584F00D88135 /* FingerPaintCanvas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,6 +269,9 @@
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = 045C5F4D1A03C90C00ED77B9;
 					};
+					90D7FD7C1C07584F00D88135 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 				};
 			};
 			buildConfigurationList = 045C5F491A03C90C00ED77B9 /* Build configuration list for PBXProject "FingerPaint" */;
@@ -207,6 +289,7 @@
 			targets = (
 				045C5F4D1A03C90C00ED77B9 /* FingerPaint */,
 				045C5F621A03C90C00ED77B9 /* FingerPaintTests */,
+				90D7FD7C1C07584F00D88135 /* FingerPaintCanvas */,
 			);
 		};
 /* End PBXProject section */
@@ -227,6 +310,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				045C5F7B1A03CF9A00ED77B9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D7FD7B1C07584F00D88135 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +347,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90D7FD781C07584F00D88135 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D7FD8B1C07585E00D88135 /* Path.swift in Sources */,
+				90D7FD8A1C07585600D88135 /* CanvasView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -264,6 +363,11 @@
 			isa = PBXTargetDependency;
 			target = 045C5F4D1A03C90C00ED77B9 /* FingerPaint */;
 			targetProxy = 045C5F641A03C90C00ED77B9 /* PBXContainerItemProxy */;
+		};
+		90D7FD831C07584F00D88135 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D7FD7C1C07584F00D88135 /* FingerPaintCanvas */;
+			targetProxy = 90D7FD821C07584F00D88135 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -368,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FingerPaint/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -379,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FingerPaint/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -420,6 +526,54 @@
 			};
 			name = Release;
 		};
+		90D7FD871C07584F00D88135 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = FingerPaintCanvas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.egv.FingerPaintCanvas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		90D7FD881C07584F00D88135 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = FingerPaintCanvas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.egv.FingerPaintCanvas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -449,6 +603,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		90D7FD861C07584F00D88135 /* Build configuration list for PBXNativeTarget "FingerPaintCanvas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D7FD871C07584F00D88135 /* Debug */,
+				90D7FD881C07584F00D88135 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
