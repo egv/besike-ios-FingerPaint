@@ -16,7 +16,7 @@ class CanvasView: UIView {
     var currentColor: UIColor! = UIColor.blackColor() {
         didSet{
             if currentColor != oldValue {
-                println("Set color \(currentColor) from \(oldValue)")
+                print("Set color \(currentColor) from \(oldValue)")
                 setNeedsDisplay()
             }
         }
@@ -71,28 +71,37 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let t = touches.anyObject() as UITouch
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let t = touches.first else {
+            return
+        }
+        
         let point = t.locationInView(self)
-        println("touch: \(point)")
+        print("touch: \(point)")
         let newPath = Path(color: currentColor)
         newPath.add(point)
         paths.append(newPath)
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let t = touches.anyObject() as UITouch
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let t = touches.first else {
+            return
+        }
+        
         let point = t.locationInView(self)
-        println("moved: \(point)")
+        print("moved: \(point)")
         let path = paths.last
         path?.add(point)
         setNeedsDisplay()
     }
 
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        let t = touches.anyObject() as UITouch
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let t = touches.first else {
+            return
+        }
+        
         let point = t.locationInView(self)
-        println("ended: \(point)")
+        print("ended: \(point)")
         let path = paths.last
         path?.add(point)
         setNeedsDisplay()

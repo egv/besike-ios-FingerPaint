@@ -84,13 +84,13 @@ class ViewController: UIViewController {
     }
    
     func colorPickerTapped(button: UIButton) {
-        println("tapped: \(button.backgroundColor)")
+        print("tapped: \(button.backgroundColor)")
         self.canvasView.currentColor = button.backgroundColor!
         tappedBtn = button
     }
     
     func setupClearButton() {
-        let button = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        let button = UIButton(type: .System) as UIButton
         self.clearButton = button
         button.frame = CGRect(x: 267, y: 518, width: 37, height: 30)
         button.setTitle("Clear", forState: UIControlState.Normal)
