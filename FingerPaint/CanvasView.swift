@@ -22,7 +22,7 @@ public class CanvasView: UIView {
         }
         
     }
-    override func drawRect(rect: CGRect) {
+    override public func drawRect(rect: CGRect) {
         for path in paths {
             if path.points.isEmpty {
                 continue
@@ -71,7 +71,7 @@ public class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let t = touches.first else {
             return
         }
@@ -83,7 +83,7 @@ public class CanvasView: UIView {
         paths.append(newPath)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let t = touches.first else {
             return
         }
@@ -95,7 +95,7 @@ public class CanvasView: UIView {
         setNeedsDisplay()
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let t = touches.first else {
             return
         }
