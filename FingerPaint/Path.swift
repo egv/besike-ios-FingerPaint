@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Path {
+public class Path {
     var points: [CGPoint] = []
     let color: UIColor
     init(color: UIColor) {

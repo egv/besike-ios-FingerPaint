@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanvasView: UIView {
+public class CanvasView: UIView {
     let zigzag = [(100,100),
                   (100,150),(150,150),
                             (150,200)]
