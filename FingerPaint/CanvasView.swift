@@ -24,7 +24,8 @@ public class CanvasView: UIView {
     
     public var backgroundImage: UIImage? = nil {
         didSet {
-            self.imageView.image = self.backgroundImage
+            self.clearPaths()
+            self.setNeedsDisplay()
         }
     }
     
