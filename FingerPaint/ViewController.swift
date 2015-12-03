@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     func setupClearButton() {
         let button = UIButton(type: .System) as UIButton
         self.clearButton = button
-        button.frame = CGRect(x: 267, y: 518, width: 37, height: 30)
+        button.frame = CGRect(x: 0, y: 0, width: 37, height: 30)
         button.setTitle("Clear", forState: UIControlState.Normal)
         
         button.addTarget(self, action: "clearCanvas:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -100,7 +100,9 @@ class ViewController: UIViewController {
     }
     
     func clearCanvas(button: UIButton) {
+        self.canvasView.compact()
         self.canvasView.clearPaths()
+        self.canvasView.backgroundImage = nil
     }
 
 }

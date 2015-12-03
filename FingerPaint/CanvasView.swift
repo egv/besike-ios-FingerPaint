@@ -44,62 +44,21 @@ public class CanvasView: UIView {
         }
     }
     
-// MARK: - init methods
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setUp()
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        setUp()
-    }
-    
-    private func setUp() {
-        imageView.translatesAutoresizingMaskIntoConstraints = true
-        imageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        imageView.frame = bounds
-        imageView.contentMode = .Center
-        addSubview(imageView)
-        
-        imageView.image = backgroundImage
-    }
-    
     override public func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        backgroundImage?.drawAtPoint(CGPointZero)
+        
         for path in paths {
-            if path.points.isEmpty {
+            guard !path.points.isEmpty else {
                 continue
             }
             
-            drawPath(path)
+            drawPath(path, context: context)
         }
     }
 
-    /// should be run only in main thread
-    public func compact() -> UIImage? {
-        guard !paths.isEmpty else {
-            return backgroundImage
-        }
-
-        objc_sync_enter(paths)
-        defer { objc_sync_exit(paths) }
-
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, window!.screen.scale)
-        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
-        let res = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        backgroundImage = res
-        clearPaths()
-
-        return res
-    }
-
-    private func drawPath(path: Path) {
-        let context = UIGraphicsGetCurrentContext()
+    private func drawPath(path: Path, context: CGContextRef?) {
+//        let context = UIGraphicsGetCurrentContext()
         CGContextBeginPath(context)
         CGContextMoveToPoint(context, path.points.first!.x, path.points.first!.y)
         
@@ -115,6 +74,26 @@ public class CanvasView: UIView {
         paths.removeAll(keepCapacity: false)
         // redrawn
         setNeedsDisplay()
+    }
+    
+    /// should be run only in main thread
+    public func compact() -> UIImage? {
+        guard !paths.isEmpty else {
+            return backgroundImage
+        }
+        
+        objc_sync_enter(paths)
+        defer { objc_sync_exit(paths) }
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, window!.screen.scale)
+        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
+        let res = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        backgroundImage = res
+        clearPaths()
+        
+        return res
     }
     
     override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
