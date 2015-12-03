@@ -9,10 +9,9 @@
 import UIKit
 
 public class CanvasView: UIView {
-    let zigzag = [(100,100),
-                  (100,150),(150,150),
-                            (150,200)]
-    var paths = [Path]()
+
+    private var paths = [Path]()
+    
     var currentColor: UIColor! = UIColor.blackColor() {
         didSet{
             if currentColor != oldValue {
@@ -22,37 +21,84 @@ public class CanvasView: UIView {
         }
         
     }
+    
+    var backgroundImage: UIImage? = nil {
+        didSet {
+            self.imageView.image = self.backgroundImage
+        }
+    }
+    
+    private var imageView: UIImageView = UIImageView()
+    
+    /// shoes if it was changed
+    var isDirty: Bool {
+        get {
+            return !self.paths.isEmpty
+        }
+    }
+    
+    /// shows if is comletely empty
+    var isEmpty: Bool {
+        get {
+            return self.paths.isEmpty && self.backgroundImage == nil
+        }
+    }
+    
+// MARK: - init methods
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUp()
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setUp()
+    }
+    
+    private func setUp() {
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        imageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        imageView.frame = bounds
+        imageView.contentMode = .Center
+        addSubview(imageView)
+        
+        imageView.image = backgroundImage
+    }
+    
     override public func drawRect(rect: CGRect) {
         for path in paths {
             if path.points.isEmpty {
                 continue
             }
+            
             drawPath(path)
         }
-
-        
-//      ======
-//        // Get the drawing context.
-//        let context = UIGraphicsGetCurrentContext()
-//        
-//        CGContextBeginPath(context)
-//        
-//        CGContextMoveToPoint(context, CGFloat( zigzag.first!.0), CGFloat( zigzag.first!.1))
-//        
-//        for var index = 1; index < zigzag.count; ++index {
-//            
-//            CGContextAddLineToPoint(context, CGFloat(zigzag[index].0), CGFloat(zigzag[index].1))
-//        }
-//        
-//        // Configure the drawing environment.
-//        CGContextSetStrokeColorWithColor(context,UIColor.redColor().CGColor)
-//        
-//        // Request the system to draw.
-//        CGContextStrokePath(context)
-        
     }
 
-    func drawPath(path: Path) {
+    /// should be run only in main thread
+    func compact() -> UIImage? {
+        guard !paths.isEmpty else {
+            return backgroundImage
+        }
+
+        objc_sync_enter(paths)
+        defer { objc_sync_exit(paths) }
+
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, window!.screen.scale)
+        drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
+        let res = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        backgroundImage = res
+        clearPaths()
+
+        return res
+    }
+
+    private func drawPath(path: Path) {
         let context = UIGraphicsGetCurrentContext()
         CGContextBeginPath(context)
         CGContextMoveToPoint(context, path.points.first!.x, path.points.first!.y)
@@ -77,7 +123,6 @@ public class CanvasView: UIView {
         }
         
         let point = t.locationInView(self)
-        print("touch: \(point)")
         let newPath = Path(color: currentColor)
         newPath.add(point)
         paths.append(newPath)
@@ -89,7 +134,6 @@ public class CanvasView: UIView {
         }
         
         let point = t.locationInView(self)
-        print("moved: \(point)")
         let path = paths.last
         path?.add(point)
         setNeedsDisplay()
@@ -101,7 +145,6 @@ public class CanvasView: UIView {
         }
         
         let point = t.locationInView(self)
-        print("ended: \(point)")
         let path = paths.last
         path?.add(point)
         setNeedsDisplay()
