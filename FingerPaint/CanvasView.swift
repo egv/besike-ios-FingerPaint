@@ -12,7 +12,7 @@ public class CanvasView: UIView {
 
     private var paths = [Path]()
     
-    var currentColor: UIColor! = UIColor.blackColor() {
+    public var currentColor: UIColor! = UIColor.blackColor() {
         didSet{
             if currentColor != oldValue {
                 print("Set color \(currentColor) from \(oldValue)")
@@ -22,7 +22,7 @@ public class CanvasView: UIView {
         
     }
     
-    var backgroundImage: UIImage? = nil {
+    public var backgroundImage: UIImage? = nil {
         didSet {
             self.imageView.image = self.backgroundImage
         }
@@ -31,14 +31,14 @@ public class CanvasView: UIView {
     private var imageView: UIImageView = UIImageView()
     
     /// shoes if it was changed
-    var isDirty: Bool {
+    public var isDirty: Bool {
         get {
             return !self.paths.isEmpty
         }
     }
     
     /// shows if is comletely empty
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         get {
             return self.paths.isEmpty && self.backgroundImage == nil
         }
@@ -79,7 +79,7 @@ public class CanvasView: UIView {
     }
 
     /// should be run only in main thread
-    func compact() -> UIImage? {
+    public func compact() -> UIImage? {
         guard !paths.isEmpty else {
             return backgroundImage
         }
